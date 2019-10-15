@@ -42,6 +42,9 @@ export class InputField {
     @Prop({ reflectToAttr: true })
     public label: string;
 
+    @Prop({ reflectToAttr: true })
+    public description: string;
+
     /**
      * Optional helper text to display below the input field when it has focus
      */

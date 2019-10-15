@@ -21,6 +21,8 @@ section {
         cursor: pointer;
         display: flex;
         padding-left: pxToRem(10);
+        padding-right: pxToRem(10);
+        justify-content: space-between;
 
         > .expander {
             color: #a6a6a6;
@@ -31,6 +33,14 @@ section {
             > svg {
                 fill: currentColor;
             }
+        }
+
+        > h5 {
+            flex-grow: 1;
+        }
+
+        > limel-icon {
+            margin-right: pxToRem(5);
         }
 
         &:hover {

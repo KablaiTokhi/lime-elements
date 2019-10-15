@@ -17,8 +17,11 @@ export class CollapsibleSection {
     @Prop({ mutable: true, reflectToAttr: true })
     public isOpen: boolean = false;
 
-    @Prop()
+    @Prop({ reflectToAttr: true })
     public header: string;
+
+    @Prop({ reflectToAttr: true })
+    public icon: string;
 
     /**
      * Emitted when the section is expanded
@@ -31,6 +34,9 @@ export class CollapsibleSection {
      */
     @Event()
     private close: EventEmitter<void>;
+
+    @Event()
+    private action: EventEmitter<string>;
 
     constructor() {
         this.onClick = this.onClick.bind(this);
@@ -57,6 +63,9 @@ export class CollapsibleSection {
                     <h5 class="mdc-typography mdc-typography--headline5">
                         {this.header}
                     </h5>
+                    <div class="actions">
+                        <limel-icon name={this.icon} size="small" onClick={() => this.action.emit()}/>
+                    </div>
                 </header>
                 <div class="body">
                     <slot />
