@@ -93,5 +93,5 @@ const findTitle = value => {
         return value;
     }
 
-    Object.keys(value).map(key => findTitle(value[key]))[0];
+    return Object.keys(value).map(key => findTitle(value[key]))[0];
 }

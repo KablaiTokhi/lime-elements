@@ -23,7 +23,11 @@ export class InputFieldWidget extends React.Component {
     }
 
     public render() {
-        const props = this['props'];
+        const props: any = this['props'];
+
+        if (this.isRange(props.schema)) {
+            return this.renderRangeWidget();
+        }
 
         return React.createElement('limel-input-field', {
             value: props.value,
@@ -34,4 +38,35 @@ export class InputFieldWidget extends React.Component {
             ref: 'ref'
         });
     }
+
+    private isRange(schema: any) {
+        if (!['integer', 'number'].includes(schema.type)) {
+            return false;
+        }
+
+        if (!('maximum' in schema)) {
+            return false;
+        }
+
+        if (!('minimum' in schema)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private renderRangeWidget() {
+        const props: any = this['props'];
+        const schema = props.schema;
+
+        return React.createElement('limel-slider', {
+            value: props.value,
+            valuemax: schema.maximum,
+            valuemin: schema.minimum,
+            label: props.label,
+            disabled: props.disabled,
+            ref: 'ref'
+        });
+    }
+
 }
