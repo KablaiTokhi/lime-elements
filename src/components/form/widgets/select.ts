@@ -1,6 +1,6 @@
 import { Option } from "../../select/option.types";
 import { isMultiple } from "../../../util/multiple";
-const { React } = window as any;
+import React from "react";
 
 export class SelectWidget extends React.Component {
     constructor() {

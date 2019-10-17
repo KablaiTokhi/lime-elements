@@ -1,4 +1,4 @@
-const { React } = window as any;
+import React from "react";
 
 export class CheckboxWidget extends React.Component {
     constructor() {

@@ -1,4 +1,4 @@
-const { React } = window as any;
+import React from "react";
 
 export const ObjectFieldTemplate = (props: any) => {
     const id = props.idSchema.$id;

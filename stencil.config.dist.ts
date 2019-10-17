@@ -10,6 +10,11 @@ const targetDist: OutputTargetDist = {
 export const config: Config = {
     namespace: 'lime-elements',
     outputTargets: [targetDist],
+    commonjs: {
+        namedExports: {
+            'node_modules/react-dom/index.js': ['render']
+        }
+    },
     plugins: [sass()],
     excludeSrc: [
         '**/test/**',

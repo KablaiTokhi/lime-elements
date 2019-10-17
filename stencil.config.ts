@@ -29,6 +29,11 @@ export const config: Config = {
     hashFileNames: false,
     namespace: 'lime-elements',
     outputTargets: [targetDist, targetWww],
+    commonjs: {
+        namedExports: {
+            'node_modules/react-dom/index.js': ['render']
+        }
+    },
     plugins: [sass()],
     excludeSrc: [
         '**/test/**',

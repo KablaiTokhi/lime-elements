@@ -8,6 +8,9 @@ import {
 } from '@stencil/core';
 import { widgets } from './widgets';
 import { FieldTemplate, ObjectFieldTemplate, ArrayFieldTemplate } from './fields';
+import React from "react";
+import { render } from "react-dom";
+import JSONSchemaForm from 'react-jsonschema-form'
 
 @Component({
     tag: 'limel-form',
@@ -31,11 +34,7 @@ export class Form {
     protected componentDidLoad() {
         const rootElement = this.host.shadowRoot.querySelector('.root');
 
-        const JSONSchemaForm = window['JSONSchemaForm'].default;
-        const React = window['React'];
-        const ReactDOM = window['ReactDOM'];
-
-        ReactDOM.render(React.createElement(JSONSchemaForm, {
+        render(React.createElement(JSONSchemaForm, {
             schema: this.schema,
             formData: this.value,
             widgets,
