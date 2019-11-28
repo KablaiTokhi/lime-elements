@@ -23,7 +23,7 @@ export class SelectWidget extends React.Component {
     }
 
     public componentDidUpdate(prevProps) {
-        const props = this['props'];
+        const props: any = this['props'];
         const element: HTMLLimelSelectElement = this['refs'].ref;
 
         if (props.options !== prevProps.options) {
@@ -36,14 +36,14 @@ export class SelectWidget extends React.Component {
     }
 
     private setOptions(element: HTMLLimelSelectElement) {
-        const props = this['props'];
+        const props: any = this['props'];
 
         const options = props.options.enumOptions.map(createOption);
         element.options = options;
     }
 
     private setValue(element: HTMLLimelSelectElement) {
-        const props = this['props'];
+        const props: any = this['props'];
         const options = element.options;
 
         const value = findValue(props.value, options, props.multiple);
@@ -51,7 +51,7 @@ export class SelectWidget extends React.Component {
     }
 
     private handleChange(event: CustomEvent<Option|Option[]>) {
-        const props = this['props'];
+        const props: any = this['props'];
         event.stopPropagation();
 
         if (isMultiple(event.detail)) {
@@ -65,7 +65,7 @@ export class SelectWidget extends React.Component {
     }
 
     public render() {
-        const props = this['props'];
+        const props: any = this['props'];
 
         return React.createElement('limel-select', {
             label: props.label || props.schema.title,
@@ -73,7 +73,7 @@ export class SelectWidget extends React.Component {
             required: props.required,
             multiple: props.multiple,
             ref: 'ref'
-        });
+        } as any);
     }
 }
 

@@ -36,7 +36,7 @@ export class ArrayFieldTemplate extends React.Component {
     }
 
     private handleAddClick(event) {
-        const props = this['props'];
+        const props: any = this['props'];
         event.stopPropagation();
         props.onAddClick(event);
     }
@@ -47,7 +47,7 @@ export class ArrayFieldTemplate extends React.Component {
     }
 
     public render() {
-        const props = this['props'];
+        const props: any = this['props'];
         const children = [
             React.createElement('h3', {}, props.title)
         ];
@@ -58,7 +58,7 @@ export class ArrayFieldTemplate extends React.Component {
                 label: 'Add',
                 primary: true,
                 ref: 'addButton'
-            }, props.title));
+            } as any, props.title));
         }
 
         Object.keys(this.removeElement).forEach(key => {
@@ -83,15 +83,27 @@ export class ArrayFieldTemplate extends React.Component {
                 icon: 'trash',
                 id: key,
                 ref: key
-            }, element.children)
+            } as any, element.children)
         );
     }
 }
 
-const findTitle = value => {
-    if (typeof value !== 'object') {
-        return value;
+const findTitle = (item: any) => {
+    if (!item) {
+      return '';
     }
 
-    return Object.keys(value).map(key => findTitle(value[key]))[0];
+    if (typeof item !== 'object') {
+      return item;
+    }
+
+    if (item.title) {
+      return findTitle(item.title);
+    }
+
+    if (item.name) {
+      return findTitle(item.name);
+    }
+
+    return Object.values(item).filter(value => !!value).map(value => findTitle(value))[0];
 }

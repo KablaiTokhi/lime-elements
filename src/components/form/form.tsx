@@ -28,6 +28,9 @@ export class Form {
     @Event()
     public change: EventEmitter<object>;
 
+    @Event()
+    public submit: EventEmitter<object>;
+
     @Element()
     private host: HTMLElement;
 
@@ -38,7 +41,8 @@ export class Form {
             schema: this.schema,
             formData: this.value,
             widgets,
-            onChange: ({formData}) => this.change.emit(formData),
+            onChange: (event: any) => this.change.emit(event.formData),
+            onSubmit: (event: any) => this.submit.emit(event.formData),
             FieldTemplate,
             ObjectFieldTemplate,
             ArrayFieldTemplate

@@ -17,19 +17,19 @@ export class CheckboxWidget extends React.Component {
     }
 
     private handleChange(event: CustomEvent<boolean>) {
-        const props = this['props'];
+        const props: any = this['props'];
         event.stopPropagation();
         props.onChange(event.detail);
     }
 
     public render() {
-        const props = this['props'];
+        const props: any = this['props'];
 
         return React.createElement('limel-checkbox', {
             checked: !!props.value,
             label: props.label,
             disabled: props.disabled,
             ref: 'ref'
-        });
+        } as any);
     }
 }

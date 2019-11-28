@@ -19,7 +19,7 @@
     "postinstall": "node postinstall.js",
     "build": "cross-env-shell NODE_ENV=prod SASS_PATH=node_modules \"stencil build --config stencil.config.dist.ts\"",
     "cm": "git-cz",
-    "dev": "cross-env-shell SASS_PATH=node_modules \"stencil build --dev --docs\"",
+    "dev": "cross-env-shell SASS_PATH=node_modules \"stencil build --dev\"",
     "watch": "cross-env-shell SASS_PATH=node_modules \"stencil build --dev --watch --docs\"",
     "docz:build": "npm run dev && docz build && cross-env-shell NODE_ENV=prod SASS_PATH=node_modules \"stencil build --docs --config stencil.config.docs.ts\"",
     "docz:dev": "docz dev",
@@ -49,6 +49,7 @@
     "chart.js": "^2.8.0",
     "jsx-dom": "^6.4.0",
     "moment": "^2.24.0",
+    "preact": "^10.0.0",
     "react-jsonschema-form": "^1.8.0"
   },
   "devDependencies": {
@@ -80,6 +81,7 @@
     "puppeteer": "1.19.0",
     "replace-in-file": "5.0.2",
     "semantic-release": "15.14.0",
+    "rollup-plugin-alias": "^2.0.1",
     "shelljs": "0.8.3",
     "showdown": "1.9.1",
     "tslint": "5.20.0",
@@ -88,6 +90,10 @@
     "tslint-plugin-prettier": "2.1.0",
     "tslint-react": "4.1.0",
     "tslint-sonarts": "1.9.0"
+  },
+  "alias": {
+    "react": "preact-compat",
+    "react-dom": "preact-compat"
   },
   "keywords": [
     "lime elements",

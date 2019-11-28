@@ -17,7 +17,7 @@ export class InputFieldWidget extends React.Component {
     }
 
     private handleChange(event: CustomEvent<string>) {
-        const props = this['props'];
+        const props: any = this['props'];
         event.stopPropagation();
         props.onChange(event.detail);
     }
@@ -36,7 +36,7 @@ export class InputFieldWidget extends React.Component {
             disabled: props.disabled,
             required: props.required,
             ref: 'ref'
-        });
+        } as any);
     }
 
     private isRange(schema: any) {
@@ -66,7 +66,7 @@ export class InputFieldWidget extends React.Component {
             label: props.label,
             disabled: props.disabled,
             ref: 'ref'
-        });
+        } as any);
     }
 
 }

@@ -4,6 +4,8 @@ import {
     OutputTargetWww,
 } from '@stencil/core/dist/declarations/output-targets';
 import { sass } from '@stencil/sass';
+import alias from 'rollup-plugin-alias';
+const path = require('path');
 
 const targetDist: OutputTargetDist = {
     type: 'dist',
@@ -34,7 +36,13 @@ export const config: Config = {
             'node_modules/react-dom/index.js': ['render']
         }
     },
-    plugins: [sass()],
+    plugins: [
+        alias({
+            "react": path.resolve(__dirname, 'node_modules/preact/compat/dist/compat.js'),
+            "react-dom": path.resolve(__dirname, 'node_modules/preact/compat/dist/compat.js'),
+        }),
+        sass()
+    ],
     excludeSrc: [
         '**/test/**',
         '**/*.spec.*',
