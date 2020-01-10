@@ -28,10 +28,9 @@ build_docs:
 	docker run --rm -w /lime $(DOCKER_IMAGE) npm run docz:build
 
 .PHONY: release_dry_run
-release_dry_run: BRANCH=''
 release_dry_run:
 	@# Builds the production build.
-	docker run --rm --user=root -e CI -e GH_USERNAME -e GH_TOKEN -e NPM_TOKEN -w /lime $(DOCKER_IMAGE) /bin/bash -c "npm run build && npx semantic-release --dry-run --branches=$(BRANCH)"
+	docker run --rm --user=root -e CI -e GH_USERNAME -e GH_TOKEN -e NPM_TOKEN -w /lime $(DOCKER_IMAGE) /bin/bash -c "npm run build && npx semantic-release --dry-run"
 
 .PHONY: release
 release:
