@@ -1,0 +1,14 @@
+@import '../../style/variables';
+@import '@limetech/mdc-tab-bar/mdc-tab-bar';
+@import '@limetech/mdc-tab-scroller/mdc-tab-scroller';
+@import '@limetech/mdc-tab-indicator/mdc-tab-indicator';
+@import '@limetech/mdc-tab/mdc-tab';
+:host {
+  display: block;
+}
+
+.mdc-text-field__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
