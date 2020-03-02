@@ -1,5 +1,6 @@
 export class Config {
     public iconPath = '';
+    public featureSwitches = {};
 }
 
 const config = new Config();
