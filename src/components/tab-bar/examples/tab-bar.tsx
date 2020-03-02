@@ -1,5 +1,5 @@
 import { Component, h } from '@stencil/core';
-import { Tab } from '../../components/tab-bar/tab.types';
+import { Tab } from '../tab.types';
 
 const tabs: Array<Tab> = [
     {
@@ -54,7 +54,7 @@ export class TabBarExample {
 
     public render() {
         return (
-            <limel-tab-bar 
+            <limel-tab-bar
                 tabs={tabs}
             >
             </limel-tab-bar>
