@@ -18,4 +18,9 @@ export interface Tab {
      * A text shown when a tab is selected.
      */
     content?: string;
+
+    /**
+     *  Color of the icon.
+     */
+    iconColor: string,
 }

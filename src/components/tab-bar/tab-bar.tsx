@@ -17,6 +17,9 @@ export class TabBar {
     @Element()
     private element: HTMLElement;
 
+    /**
+     * List of tabs to display
+     */
     @Prop()
     public tabs: Tab[];
 
@@ -31,15 +34,17 @@ export class TabBar {
     }
 
     public componentDidLoad() {
+        this.element.focus();
         this.setup();
     }
 
     private setup() {
+        this.element.focus();
         const element = this.element.shadowRoot.querySelector('.mdc-tab-bar');
         if (!element) {
             return;
         }
-
+        
         this.mdcTabBar = new MDCTabBar(element);
 
         this.setupListeners();
@@ -59,15 +64,36 @@ export class TabBar {
         return (
             <div class="mdc-tab-bar" role="tablist">
                 <div class="mdc-tab-scroller">
-                    <div class="mdc-tab-scroller__scroll-area">
+                    <div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll">
                         <div class="mdc-tab-scroller__scroll-content">
                             {this.renderTabs()}
                         </div>
                     </div>
+                </div>
+
+                <div class="content">
                     <slot>{this.selectedTab && this.selectedTab.content}</slot>
                 </div>
             </div>
         );
+    }
+
+    private renderIcon(tab: Tab) {
+        const style = {};
+        if (tab.iconColor) {
+            style['background-color'] = tab.iconColor;
+            style['color'] = 'white';
+        }
+
+        return (
+            <limel-icon
+                class="mdc-text-field__icon"
+                name={tab.icon}
+                badge={true}
+                style={style}
+                size="small"
+            />
+        )
     }
 
     private renderTabs() {
@@ -80,12 +106,9 @@ export class TabBar {
                     `}
                         role="tab"
                         aria-selected="true" tabindex={index}
-                        onChange={this.handleAction}
                     >
                         <span class="mdc-tab__content">
-                            <i class="mdc-text-field__icon">
-                                <limel-icon name={tab.icon} />
-                            </i>
+                            {this.renderIcon(tab)}
                             <span class="mdc-tab__text-label">{tab.name}</span>
                         </span>
                         <span class={`
